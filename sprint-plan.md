@@ -51,12 +51,12 @@ This document outlines a sprint-based plan for the development of the Paradox Co
     *   [x] Write initial database migration scripts (if using a migration tool). (Prisma `migrate dev`)
     *   [x] Connect the Vercel Functions backend to the PostgreSQL database. (Prisma Client setup)
     *   [x] Implement a basic API endpoint to test database connectivity (e.g., read/write a dummy record). (`/api/db-test` - Assumed Successful by User)
-    *   [ ] Set up basic Vercel deployment for both frontend and backend.
-    *   [ ] Configure environment variables for Clerk, Database in Vercel. (OpenAI API key later)
+    *   [x] Set up basic Vercel deployment for both frontend and backend.
+    *   [x] Configure environment variables for Clerk, Database in Vercel. (OpenAI API key later)
 *   **Deliverables:**
     *   [x] Provisioned PostgreSQL database with initial schema.
     *   [x] Backend API connected to the database.
-    *   [ ] Basic version of the application deployed to Vercel with working authentication and database connection.
+    *   [x] Basic version of the application deployed to Vercel with working authentication and database connection.
 
 ## Phase 2: Core Analysis & Saving (Approx. 4-5 weeks)
 
