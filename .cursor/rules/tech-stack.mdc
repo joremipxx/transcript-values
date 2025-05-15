@@ -1,0 +1,37 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Definitive Technology Stack (Updated with Clerk Authentication)
+
+Frontend: Next.js 
+
+Backend: Node.js (Vercel Functions)
+
+Handles transcript submissions, interacts with the OpenAI API, manages data storage (saving and retrieving analyses), and integrates with Clerk webhooks or APIs to verify authenticated teacher requests. Triggers PDF generation.
+
+Database: PostgreSQL (or similar relational database like MySQL)
+
+Stores coaching transcripts and AI analysis results persistently. A managed service (like Vercel Postgres, Supabase, or Render Postgres) is recommended. This database will likely link analysis results to a teacher user ID provided by Clerk.
+
+Authentication: Clerk
+
+A third-party authentication service handling user registration (if needed later) and login flows. It provides secure user management and allows the backend to verify authenticated requests from teachers.
+
+AI Integration: OpenAI API (gpt-4o)
+
+Utilizing the latest OpenAI model for sophisticated transcript analysis and evaluation.
+
+PDF Generation: Puppeteer (or equivalent Node.js library/service)
+
+A server-side solution called from the backend to reliably generate PDF reports.
+
+Deployment: Vercel
+
+Hosting the React frontend, the Node.js backend functions, and potentially the database.
+
+Input Handling:
+
+Direct Text Area input.
+File processing for .txt and .docx formats on the backend.

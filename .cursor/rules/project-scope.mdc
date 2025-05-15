@@ -1,0 +1,142 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Project Scope: Paradox Coaching Transcript Analysis Web App
+
+## 1. Introduction
+
+This document outlines the scope for the development of a web application for Paradox Coaching School. The application will allow authenticated teachers to submit coaching session transcripts, receive AI-powered analysis and feedback based on Paradox's specific coaching criteria, and determine if the session meets "Pass" standards for exam purposes. Teachers will be able to save and later review these analyses. The goal is to provide teachers with a tool to evaluate student practice sessions efficiently and provide targeted feedback, while also allowing them to maintain a record of evaluations.
+
+## 2. Project Goal
+
+To develop a secure web application where authenticated Paradox teachers can submit coaching session transcripts, receive detailed AI-generated analysis and a Pass/Fail assessment, save these evaluations for future reference, and download a PDF report.
+
+## 3. Scope
+
+### 3.1. In Scope
+
+* **User Authentication (Teachers):** Implement teacher login using Clerk.
+* **Transcript Input:** Functionality for authenticated teachers to input transcripts via a text area (copy/paste) and file upload (.txt, .docx).
+* **AI Analysis Integration:** Integration with the OpenAI API (`gpt-4o`) to process transcripts and generate structured feedback based on the specified Paradox criteria.
+* **Feedback Display:** Clear and organized display of the AI-generated evaluation, including scores (1-10), detailed observations with transcript evidence, overall strengths, areas for improvement, and actionable suggestions.
+* **Pass/Fail Assessment:** A prominent visual indicator and explanation of whether the session meets the "Pass" standard based on the AI analysis.
+* **Saving Analyses:** Functionality to save the submitted transcript and the AI-generated analysis results persistently in a database, linked to the teacher account.
+* **Viewing Saved Analyses:** A dedicated section or dashboard where authenticated teachers can view a list of their previously saved analyses and access the detailed results for each.
+* **PDF Report Generation:** Functionality to generate and download a PDF report summarizing a selected saved analysis.
+* **Basic Error Handling:** User-friendly messages for common issues (e.g., authentication errors, API errors, invalid file format, processing failures, database connection issues).
+* **Responsive Design:** The application interface will be designed to be usable on various devices (desktop, tablet, mobile).
+* **Deployment:** Deployment of the application on Vercel.
+
+### 3.2. Out of Scope
+
+* **Student Accounts:** No user accounts or access for students in this phase. The application is for teacher use only.
+* **Public Access:** Saved analyses are only accessible to the teacher who performed the analysis (or potentially other designated teacher accounts, depending on Clerk setup, but not publicly accessible).
+* **Advanced Teacher Roles/Permissions:** A single level of "Teacher" access; no different roles or granular permissions for viewing/editing analyses.
+* **Direct Audio/Video Upload & Transcription:** Users must provide text-based transcripts. Automatic transcription from audio/video is not included.
+* **Real-time Feedback:** Analysis occurs after the full transcript is submitted.
+* **Advanced Analytics/Reporting:** No historical tracking across *all* analyses (beyond viewing individual saved ones), progress charts, or comparative analysis features.
+* **Admin Interface (beyond viewing saved analyses):** No interface for managing users, modifying evaluation criteria, or viewing global application statistics.
+* **Multi-language Support (beyond French for prompt/output):** UI localization is not included.
+* **Complex Transcript Formatting Handling:** While .docx is supported, highly complex formatting within documents may not be perfectly preserved or interpreted.
+
+## 4. Key Features
+
+* Teacher login via Clerk authentication
+* Transcript input (text area and .txt/.docx upload)
+* AI-powered analysis using OpenAI `gpt-4o`
+* Evaluation against Paradox's specific coaching competencies and sub-points
+* Score (1-10) and detailed observation for each sub-point, with transcript evidence
+* Overall strengths, areas for improvement, and actionable suggestions
+* Clear "Pass" or "Fail" assessment with reasoning
+* Saving transcript and analysis results linked to the teacher account
+* Dashboard/list of saved analyses for the logged-in teacher
+* Viewing detailed results for a saved analysis
+* Downloadable PDF report of a saved analysis
+* Responsive web interface
+
+## 5. Technology Stack
+
+* **Database:** PostgreSQL (e.g., Vercel Postgres, Supabase)
+* **Authentication:** Clerk
+* **AI Integration:** OpenAI API (`gpt-4o`)
+* **PDF Generation:** Puppeteer (or a suitable Node.js PDF library)
+* **Deployment:** Vercel
+
+## 6. Phases / High-Level Timeline
+
+*(Note: This is a high-level estimate and subject to change based on development speed and feedback. Adding authentication and a database adds complexity compared to the original scope.)*
+
+* **Phase 1: Foundation & Authentication (Approx. 3-4 weeks)**
+    * Set up project structure (Frontend/Backend).
+    * Integrate Clerk for teacher login.
+    * Set up PostgreSQL database and basic data model (Users, Analyses).
+    * Basic Vercel deployment setup with database connection.
+* **Phase 2: Core Analysis & Saving (Approx. 4-5 weeks)**
+    * Implement Transcript Input (Text Area and File Upload).
+    * Integrate OpenAI API for analysis (sending transcript, receiving JSON).
+    * Develop backend logic to save transcript and analysis results to the database, linked to the logged-in teacher.
+* **Phase 3: Display & Retrieval (Approx. 3-4 weeks)**
+    * Develop structured display of AI evaluation on the frontend.
+    * Implement Pass/Fail logic.
+    * Create dashboard/list view for saved analyses.
+    * Implement functionality to retrieve and display a specific saved analysis.
+    * Display original transcript for saved analysis.
+* **Phase 4: Output & Polish (Approx. 2-3 weeks)**
+    * Implement PDF generation for saved analyses.
+    * Improve UI/UX design and responsiveness.
+    * Add robust error handling and loading states.
+    * Testing and refinement.
+* **Phase 5: Final Deployment & Handover (Approx. 1 week)**
+    * Final deployment on Vercel.
+    * Documentation (teacher user guide, technical setup).
+    * Handover to Paradox School.
+
+## 7. Key Deliverables
+
+* Deployed web application on Vercel with teacher login.
+* Source code for the frontend and backend.
+* PostgreSQL database structure and connection setup.
+* Clerk integration and configuration.
+* AI prompt configuration.
+* Teacher user instructions for using the app.
+* PDF report template/generation logic.
+
+## 8. Success Criteria
+
+* Teachers can successfully log in using Clerk.
+* Authenticated teachers can submit transcripts via text area and file upload.
+* The AI analysis provides relevant, structured, and evidence-backed feedback.
+* The Pass/Fail assessment is consistently applied.
+* Teachers can successfully save analysis results.
+* Teachers can view a list of their saved analyses.
+* Teachers can retrieve and view detailed results for any saved analysis.
+* Teachers can download a correctly formatted PDF report for a saved analysis.
+* The application is secure, ensuring only authenticated teachers can access saved data.
+* The application is accessible and usable on common devices.
+* The application is successfully deployed and operational on Vercel.
+
+## 9. Assumptions
+
+* Paradox School will provide clear and stable definitions of their coaching evaluation criteria.
+* Access to the OpenAI API will be available and within budget for anticipated usage.
+* Clerk service will be available and configured for use.
+* The chosen PostgreSQL database service will be available and accessible from Vercel Functions.
+* Users will provide transcripts that are reasonably clean and follow a standard conversational format (e.g., with speaker labels).
+* The performance and output consistency of the `gpt-4o` model will be sufficient for the evaluation needs.
+* Development resources with expertise in the chosen technology stack (React, Node.js, PostgreSQL, Clerk, Vercel) are available.
+
+## 10. Constraints
+
+* Project timeline as outlined in Section 6.
+* Budget for OpenAI API usage and potentially Clerk/database service fees.
+* Reliance on the capabilities and limitations of the OpenAI API for analysis quality.
+* Reliance on Clerk for authentication service availability and features.
+* The scope is limited to the features defined in the "In Scope" section for this phase.
+
+## 11. Stakeholders
+
+* Paradox Coaching School (Project Owner, providing criteria and feedback, teacher users)
+* Development Team
+* Clerk (Authentication Service
