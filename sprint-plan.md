@@ -64,13 +64,13 @@ This document outlines a sprint-based plan for the development of the Paradox Co
 
 **Sprint 2.1: Transcript Input - Text Area (1 week)**
 *   **Tasks:**
-    *   Design and implement the UI for transcript submission via a text area on the frontend.
-    *   Develop frontend logic to capture text input.
-    *   Create a backend API endpoint (`/api/submit-transcript-text`) to receive the text transcript from an authenticated teacher.
-    *   Basic validation for transcript input (e.g., not empty).
+    *   [x] Design and implement the UI for transcript submission via a text area on the frontend.
+    *   [x] Develop frontend logic to capture text input.
+    *   [x] Create a backend API endpoint (`/api/submit-transcript-text`) to receive the text transcript from an authenticated teacher.
+    *   [x] Basic validation for transcript input (e.g., not empty).
 *   **Deliverables:**
-    *   Functional text area for transcript input.
-    *   Backend endpoint that receives text transcripts.
+    *   [x] Functional text area for transcript input.
+    *   [x] Backend endpoint that receives text transcripts.
 
 **Sprint 2.2: Transcript Input - File Upload (1 week)**
 *   **Tasks:**
